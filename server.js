@@ -7,7 +7,8 @@ const PORT = process.env.PORT || 3001;
 
 const sequelize = require('./config/connection');
 
-const hbs = exphbs.create({});
+const helpers = require('./utils/helpers')
+const hbs = exphbs.create({helpers});
 
 const session = require('express-session');
 
@@ -22,6 +23,7 @@ const sess = {
     db: sequelize
   })
 };
+
 
 app.use(session(sess))
 
